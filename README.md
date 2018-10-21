@@ -387,29 +387,29 @@ While you can still use `require()` and `module.exports`, we encourage you to us
 
 For example:
 
-### `Button.js`
+### `Buttonss.js`
 
 ```js
 import React, { Component } from 'react';
 
-class Button extends Component {
+class Buttons extends Component {
   render() {
     // ...
   }
 }
 
-export default Button; // Don’t forget to use export default!
+export default Buttons; // Don’t forget to use export default!
 ```
 
 ### `DangerButton.js`
 
 ```js
 import React, { Component } from 'react';
-import Button from './Button'; // Import a component from another file
+import Buttons from './Buttons'; // Import a component from another file
 
 class DangerButton extends Component {
   render() {
-    return <Button color="red" />;
+    return <Buttons color="red" />;
   }
 }
 
@@ -418,7 +418,7 @@ export default DangerButton;
 
 Be aware of the [difference between default and named exports](http://stackoverflow.com/questions/36795819/react-native-es-6-when-should-i-use-curly-braces-for-import/36796281#36796281). It is a common source of mistakes.
 
-We suggest that you stick to using default imports and exports when a module only exports a single thing (for example, a component). That’s what you get when you use `export default Button` and `import Button from './Button'`.
+We suggest that you stick to using default imports and exports when a module only exports a single thing (for example, a component). That’s what you get when you use `export default Buttons` and `import Buttons from './Buttons'`.
 
 Named exports are useful for utility modules that export several functions. A module may have at most one default export and as many named exports as you like.
 
@@ -486,24 +486,24 @@ Also check out the [Code Splitting](https://reactjs.org/docs/code-splitting.html
 
 This project setup uses [Webpack](https://webpack.js.org/) for handling all assets. Webpack offers a custom way of “extending” the concept of `import` beyond JavaScript. To express that a JavaScript file depends on a CSS file, you need to **import the CSS from the JavaScript file**:
 
-### `Button.css`
+### `Buttons.css`
 
 ```css
-.Button {
+.Buttons {
   padding: 20px;
 }
 ```
 
-### `Button.js`
+### `Buttonss.js`
 
 ```js
 import React, { Component } from 'react';
-import './Button.css'; // Tell Webpack that Button.js uses these styles
+import './Buttons.css'; // Tell Webpack that Buttons.jss uses these styles
 
-class Button extends Component {
+class Buttons extends Component {
   render() {
     // You can use them as regular CSS styles
-    return <div className="Button" />;
+    return <div className="Buttons" />;
   }
 }
 ```
@@ -524,7 +524,7 @@ This project supports [CSS Modules](https://github.com/css-modules/css-modules) 
 
 CSS Modules let you use the same CSS class name in different files without worrying about naming clashes. Learn more about CSS Modules [here](https://css-tricks.com/css-modules-part-1-need/).
 
-### `Button.module.css`
+### `Buttons.module.css`
 
 ```css
 .error {
@@ -540,17 +540,17 @@ CSS Modules let you use the same CSS class name in different files without worry
 }
 ```
 
-### `Button.js`
+### `Buttons.jss`
 
 ```js
 import React, { Component } from 'react';
-import styles from './Button.module.css'; // Import css modules stylesheet as styles
+import styles from './Buttons.module.css'; // Import css modules stylesheet as styles
 import './another-stylesheet.css'; // Import regular stylesheet
 
-class Button extends Component {
+class Buttons extends Component {
   render() {
     // reference as a js object
-    return <button className={styles.error}>Error Button</button>;
+    return <button className={styles.error}>Error Buttons</button>;
   }
 }
 ```
@@ -570,7 +570,7 @@ No clashes from other `.error` class names
 
 > Note: this feature is available with `react-scripts@2.0.0` and higher.
 
-Generally, we recommend that you don’t reuse the same CSS classes across different components. For example, instead of using a `.Button` CSS class in `<AcceptButton>` and `<RejectButton>` components, we recommend creating a `<Button>` component with its own `.Button` styles, that both `<AcceptButton>` and `<RejectButton>` can render (but [not inherit](https://facebook.github.io/react/docs/composition-vs-inheritance.html)).
+Generally, we recommend that you don’t reuse the same CSS classes across different components. For example, instead of using a `.Buttons` CSS class in `<AcceptButton>` and `<RejectButton>` components, we recommend creating a `<Buttons>` component with its own `.Buttons` styles, that both `<AcceptButton>` and `<RejectButton>` can render (but [not inherit](https://facebook.github.io/react/docs/composition-vs-inheritance.html)).
 
 Following this rule often makes CSS preprocessors less useful, as features like mixins and nesting are replaced by component composition. You can, however, integrate a CSS preprocessor if you find it valuable.
 
@@ -811,7 +811,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 Import required reactstrap components within `src/App.js` file or your custom component files:
 
 ```js
-import { Button } from 'reactstrap';
+import { Buttons } from 'reactstrap';
 ```
 
 Now you are ready to use the imported reactstrap components within your component hierarchy defined in the render method. Here is an example [`App.js`](https://gist.githubusercontent.com/zx6658/d9f128cd57ca69e583ea2b5fea074238/raw/a56701c142d0c622eb6c20a457fbc01d708cb485/App.js) redone using reactstrap.
@@ -1422,7 +1422,7 @@ it('renders without crashing', () => {
 });
 ```
 
-Unlike the previous smoke test using `ReactDOM.render()`, this test only renders `<App>` and doesn’t go deeper. For example, even if `<App>` itself renders a `<Button>` that throws, this test will pass. Shallow rendering is great for isolated unit tests, but you may still want to create some full rendering tests to ensure the components integrate correctly. Enzyme supports [full rendering with `mount()`](http://airbnb.io/enzyme/docs/api/mount.html), and you can also use it for testing state changes and component lifecycle.
+Unlike the previous smoke test using `ReactDOM.render()`, this test only renders `<App>` and doesn’t go deeper. For example, even if `<App>` itself renders a `<Buttons>` that throws, this test will pass. Shallow rendering is great for isolated unit tests, but you may still want to create some full rendering tests to ensure the components integrate correctly. Enzyme supports [full rendering with `mount()`](http://airbnb.io/enzyme/docs/api/mount.html), and you can also use it for testing state changes and component lifecycle.
 
 You can read the [Enzyme documentation](http://airbnb.io/enzyme/) for more testing techniques. Enzyme documentation uses Chai and Sinon for assertions but you don’t have to use them because Jest provides built-in `expect()` and `jest.fn()` for spies.
 
