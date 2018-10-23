@@ -12,7 +12,9 @@ class App extends Component {
         this.removeRow = this.removeRow.bind(this);
         this.mouseLeave = this.mouseLeave.bind(this);
         this.mouseOver = this.mouseOver.bind(this);
-        this.state = {columnCount: 4, rowCount: 4, delBtnShowClass: ""};
+        this.columnCount = 4;
+        this.rowCount = 4;
+        this.state = {columnCount: this.columnCount, rowCount: this.rowCount, delBtnShowClass: ""};
         this.table = React.createRef();
     }
 
@@ -20,7 +22,7 @@ class App extends Component {
         return (
             <div className="container">
                 <div className="table-container" onMouseLeave={this.mouseLeave} onMouseOver={this.mouseOver}>
-                    <DeleteButton className={`top-btn ${this.checkIsShowButtonForDeleteColumn(this.state.delBtnShowClass)}`} symbol="-" handleClick={this.removeRow} leftPosition={this.state.leftPosition}/>
+                    <DeleteButton className={`top-btn ${this.checkIsShowButtonForDeleteColumn(this.state.delBtnShowClass)}`} symbol="-" handleClick={this.removeColumn} leftPosition={this.state.leftPosition}/>
                     <DeleteButton className={`left-btn ${this.checkIsShowButtonForDeleteRow(this.state.delBtnShowClass)}`}  symbol="-" handleClick={this.removeRow} topPosition={this.state.topPosition}/>
                     <AddButton className="bottom-btn" symbol="+" handleClick={this.addColumn} />
                     <AddButton className="right-btn" symbol="+" handleClick={this.addRow} />
@@ -31,21 +33,36 @@ class App extends Component {
     }
 
     addRow() {
-        this.setState({rowCount: this.state.rowCount+1});
+        this.rowCount +=1;
+        this.setState({rowCount: this.rowCount});
     }
 
     removeRow(e) {
-        console.log(this.lastElement.parentNode);
+        this.setState({delBtnShowClass: ""})
         this.lastElement.parentNode.remove();
-        this.setState({rowCount: this.state.rowCount-1, delBtnShowClass: ""});
+        this.rowCount -=1;
     }
 
     addColumn() {
-        this.setState({columnCount: this.state.columnCount+1});
+        this.columnCount +=1;
+        this.setState({columnCount: this.columnCount});
     }
 
     removeColumn() {
-        this.setState({columnCount: this.state.columnCount-1, delBtnShowClass: ""});
+        // console.log("sf00");
+        // console.log(this.props.children);
+        // console.log("sf00");
+        // this.table.current.test();
+        // let index = Array.prototype.indexOf.call(this.lastElement.parentElement.children, this.lastElement);
+        // let trs_collection = Array.from(this.lastElement.parentNode.parentNode);
+        // console.log(trs_collection);
+        // trs_collection.forEach(function (item, i, arr) {
+        //    if(i == index){
+        //        item.remove();
+        //    }
+        // });
+        console.log(this.table.current);
+        this.setState({delBtnShowClass: ""});
     }
 
     mouseOver(e) {

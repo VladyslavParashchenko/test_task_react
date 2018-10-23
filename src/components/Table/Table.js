@@ -10,6 +10,9 @@ export class Table extends Component{
         }
         return <table>{rows}</table>;
     }
+    test(){
+        alert("test");
+    }
 }
 class TableRow extends Component{
     render(){
